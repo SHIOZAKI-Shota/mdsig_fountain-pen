@@ -1,0 +1,45 @@
+{
+  "name": "mdsig-fountain-pen",
+  "productName": "md-signature Fountain Pen",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "tauri": "tauri",
+    "app:dev": "tauri dev",
+    "app:build": "node scripts/tauri-build.ts",
+    "typecheck": "nuxt typecheck",
+    "test": "node --test test/*.test.ts",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@codemirror/commands": "6.11.1",
+    "@codemirror/lang-markdown": "6.5.2",
+    "@codemirror/language": "6.13.1",
+    "@codemirror/search": "6.7.2",
+    "@codemirror/state": "6.7.6",
+    "@codemirror/view": "6.43.15",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@fontsource-variable/m-plus-2": "5.3.1",
+    "@lezer/highlight": "1.2.5",
+    "@mdsig/core": "0.0.5",
+    "@tauri-apps/api": "2.12.5",
+    "@tauri-apps/plugin-clipboard-manager": "2.5.0",
+    "@tauri-apps/plugin-dialog": "2.8.4",
+    "@tauri-apps/plugin-http": "2.9.0",
+    "@tauri-apps/plugin-opener": "2.7.3",
+    "dompurify": "3.4.18",
+    "marked": "18.2.1",
+    "nuxt": "4.6.4",
+    "vue": "3.5.45"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.6",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "vue-tsc": "^3.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "email": "dave@mail.example",
+  "verified": "email",
+  "keys": [
+    {
+      "type": "ed25519",
+      "key": "PKhbhIf4T3NlwXZPvsKXxBTeKjs4jubHw8BiQC9xVuo=",
+      "added": "2026-11-01T00:00:00Z"
+    }
+  ]
+}

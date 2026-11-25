@@ -1,0 +1,11 @@
+{
+  "email": "frank@corp.example",
+  "verified": "email",
+  "keys": [
+    {
+      "type": "ed25519",
+      "key": "QPEpPjlI4TZfZHahoIQGp7ExNoMnWa2P8ruNoG9Eti8=",
+      "added": "2026-11-01T00:00:00Z"
+    }
+  ]
+}

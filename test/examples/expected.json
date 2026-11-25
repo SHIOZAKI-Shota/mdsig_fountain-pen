@@ -1,0 +1,491 @@
+{
+  "valid-single.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "valid-cosigned.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "tsa": [
+      null,
+      "ok"
+    ]
+  },
+  "valid-crlf.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "tampered.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:hash-mismatch"
+    ]
+  },
+  "tampered-metadata.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:bad-signature"
+    ]
+  },
+  "unsigned-trailer.md": {
+    "ok": false,
+    "signatures": [],
+    "error": "unsigned-content"
+  },
+  "valid-resources.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "resources": [
+      [
+        "ok",
+        "not-checked"
+      ]
+    ]
+  },
+  "tampered-resource.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:resource-mismatch"
+    ]
+  },
+  "missing-resource.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:resource-missing"
+    ]
+  },
+  "valid-scoped-edited.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "partial": [
+      [
+        "terms",
+        "fees"
+      ]
+    ]
+  },
+  "tampered-scoped.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:hash-mismatch"
+    ]
+  },
+  "malformed-unclosed-section.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "pending-require.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "pending"
+  },
+  "complete-require.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete"
+  },
+  "pending-require-scoped.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "partial": [
+      null,
+      [
+        "terms"
+      ]
+    ]
+  },
+  "require-serial-complete.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete"
+  },
+  "require-serial-pending.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending"
+  },
+  "require-serial-guide.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete"
+  },
+  "require-serial-strict.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "violated"
+  },
+  "require-any-pending.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending"
+  },
+  "require-any-complete.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete"
+  },
+  "malformed-require-steps.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "legacy-v001.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "pending"
+  },
+  "mixed-versions.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete"
+  },
+  "malformed-require-step-v001.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "unsupported-version-new-field.md": {
+    "ok": false,
+    "signatures": [
+      "unsupported:unsupported-version"
+    ]
+  },
+  "valid-key-snapshot.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "key-not-published.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:key-not-published"
+    ]
+  },
+  "valid-tsa-block.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "tsa": [
+      null,
+      "ok"
+    ]
+  },
+  "valid-tsa-renewal.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "tsa": [
+      null,
+      "ok",
+      "ok"
+    ]
+  },
+  "tampered-tsa-block.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:hash-mismatch",
+      "invalid:hash-mismatch"
+    ]
+  },
+  "malformed-duplicate-version.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "expired.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:expired"
+    ]
+  },
+  "not-revoked.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "revocation": [
+      "not-revoked"
+    ]
+  },
+  "revoked.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:revoked"
+    ]
+  },
+  "unknown-field.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:unknown-field"
+    ]
+  },
+  "malformed-bidi-control.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "malformed-git-hosting-ip.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "valid-webauthn.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "tampered-webauthn.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:bad-signature"
+    ]
+  },
+  "directory-valid.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "directory-snapshot.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "directory-passkey.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "directory-key-not-published.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:key-not-published"
+    ]
+  },
+  "directory-not-found.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "directory-domain-delegated.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "directory-conflicting-dir.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "malformed-directory-signer.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "dns-unknown-tag.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ]
+  },
+  "valid-pgp-ed25519.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "pgp": [
+      {
+        "keySource": "wkd",
+        "keyAlg": "ed25519"
+      }
+    ]
+  },
+  "valid-pgp-v6.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "pgp": [
+      {
+        "keySource": "keyserver",
+        "keyAlg": "ed25519"
+      }
+    ]
+  },
+  "valid-pgp-p256-subkey.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "pgp": [
+      {
+        "keySource": "keyserver",
+        "keyAlg": "ecdsa-p256"
+      }
+    ]
+  },
+  "valid-pgp-rsa.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "pgp": [
+      {
+        "keySource": "keyserver",
+        "keyAlg": "rsa2048"
+      }
+    ]
+  },
+  "valid-pgp-gpg.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "pgp": [
+      {
+        "keySource": "keyserver",
+        "keyAlg": "rsa2048"
+      }
+    ]
+  },
+  "tampered-pgp.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:bad-signature"
+    ]
+  },
+  "malformed-pgp-alg.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ]
+  },
+  "pgp-wrong-uid.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "pgp-fpr-mismatch.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:bad-signature"
+    ]
+  },
+  "pgp-sha1.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:bad-signature"
+    ]
+  },
+  "pgp-revoked-key.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:revoked"
+    ]
+  },
+  "pgp-subkey-not-signing.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "pgp-subkey-no-backsig.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "pgp-v6-no-direct-key.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:not-found"
+    ]
+  },
+  "pgp-revoked.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:revoked"
+    ]
+  },
+  "pgp-revoked-malleated.md": {
+    "ok": false,
+    "signatures": [
+      "invalid:revoked"
+    ]
+  },
+  "pgp-keyserver-field.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:unknown-field"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "email": "carol@mail.example",
+  "verified": "email",
+  "keys": [
+    {
+      "type": "es256",
+      "key": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHO+lUjCFvlifqkNTTmaGJ9I9TOA5/+yzMMvu05KvvDmALH5TJ/xYy4E/7r6SsIMCTODGCYgEacrb+8uGtyGcoQ==",
+      "added": "2026-11-01T00:00:00Z"
+    }
+  ]
+}
