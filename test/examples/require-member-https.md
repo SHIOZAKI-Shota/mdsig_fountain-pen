@@ -13,29 +13,28 @@ This agreement is made between **Example Corp** ("Provider") and **Alice** ("Cli
 日本語の本文も UTF-8 でそのまま署名されます。
 
 <!-- md-signature
-v: 0.0.1
-method: tofu
-signer: bob@laptop
-pubkey: ed25519:/FHNjmIYoaONpH7QAjDwWAgW7RO6MwOsXeuRFUiQgCU=
-role: author
-ts: 2026-11-16T09:00:00Z
-require: dns:example.com approver
-alg: ed25519
-hash: sha256:f06c734545219e83074ab04481e4b4715054a8f1ac88367c90d2ce24bc76705c
-sig: |
-  base64:IXLDiNQ3bff7RBE8kG7wE0fRWxN/rsle9wjZYiyGYUAK8G38Xgkrj05hHTWRK6Qv+RXlb
-  FNEVrD3Bb5nojDiCA==
--->
-<!-- md-signature
-v: 0.0.2
+v: 0.1
 method: dns
 signer: example.com
 selector: 2026
-role: approver
-ts: 2026-11-16T09:46:00Z
+role: author
+ts: 2026-11-16T09:00:00Z
+require: dns:*.example.com member_of=https://example.com/members.md
 alg: ed25519
-hash: sha256:2ae624523a867ba6273d1711a75169e20f1521d33f6c8b1a15a3e3c9de5cdd3f
+hash: sha256:f06c734545219e83074ab04481e4b4715054a8f1ac88367c90d2ce24bc76705c
 sig: |
-  base64:hFhbb1fxloXkduNeOEdw024zOFkZJjbAOnkIpZGBFcQZNi3cr1SucpFKrsPoZT5JPZeei
-  6Z8bTshM2r/nnDjAA==
+  base64:CRBbJu/ZTYTILmrUyQFVV/t4HgOnTM8lvVxl8SEdxK6FykuDCiPT+k4GcNRUpxMPzw0BV
+  5y1mSR/pNZwEFXfAw==
+-->
+<!-- md-signature
+v: 0.1
+method: dns
+signer: a.example.com
+selector: 2026
+ts: 2026-11-16T09:30:00Z
+alg: ed25519
+hash: sha256:e802b99ceb76159e02a346968c10947f048ec1c45a550737978b81950832c059
+sig: |
+  base64:fyZZpFPCdUU6JHOxV0CoUPF04o5qzVQDlgL3cCRKvFTNrc4rC8vXoGvkBpEFzCyl6hRIl
+  0Spkz56aSGrnP5RDg==
 -->

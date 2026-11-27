@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { DEFAULT_KEY_DIRECTORIES, connectPasskeyViaPage, createHandoffRequest, directoryKeyUrl, fromBase64Url, keyFingerprint, parseDocument, sshFingerprint, toBase64Url, verifyDocument, generateEd25519, toBase64 } from "@mdsig/core";
+import { DEFAULT_KEY_DIRECTORIES, signDocument, connectPasskeyViaPage, createHandoffRequest, directoryKeyUrl, fromBase64Url, keyFingerprint, parseDocument, sshFingerprint, toBase64Url, verifyDocument, generateEd25519, toBase64 } from "@mdsig/core";
 import { HandoffCancelled, handleHandoffUrl, setHandoffOpener, transport, RETURN_URL } from "../app/services/handoff.ts";
 import type { PasskeyRecord } from "../app/services/passkeys.ts";
 import { expiresAt, signWithPasskey, type SignRequest } from "../app/services/sign.ts";
@@ -10,11 +10,12 @@ import { setLang } from "../app/lib/i18n.ts";
 setLang("en");
 
 const PAGE = "https://keys.example.org/sign";
-const request = (o: Partial<SignRequest> = {}): SignRequest => ({ method: "tofu", signer: "alice", role: "approver", reason: "", timestamp: false, tsaUrl: "", expires: "", scope: [], require: "", embedKey: false, force: false, ...o });
+const request = (o: Partial<SignRequest> = {}): SignRequest => ({ method: "tofu", signer: "alice", role: "approver", displayName: "", reason: "", timestamp: false, tsaUrl: "", expires: "", scope: [], require: "", embedKey: false, force: false, ...o });
 
-function useSigningPage(change?: (u: URL) => void, refuse?: string) {
+function useSigningPage(change?: (u: URL) => void, refuse?: string, flags?: number, seen?: (url: URL) => void) {
   setHandoffOpener(async (url) => {
-    const r = await signingPage(url, { refuse });
+    seen?.(new URL(url));
+    const r = await signingPage(url, { refuse: refuse as "cancelled" | undefined, flags });
     assert.ok(r);
     const u = new URL(r);
     change?.(u);
@@ -22,8 +23,8 @@ function useSigningPage(change?: (u: URL) => void, refuse?: string) {
   });
 }
 
-async function connect(): Promise<PasskeyRecord> {
-  useSigningPage();
+async function connect(flags?: number): Promise<PasskeyRecord> {
+  useSigningPage(undefined, undefined, flags);
   const p = await connectPasskeyViaPage(PAGE, { returnUrl: RETURN_URL, transport });
   return { page: PAGE, rpId: p.rpId, key: toBase64(p.key), credential: p.credential, id: "1", label: "test", added: "" };
 }
@@ -109,4 +110,36 @@ test("a passkey signs a directory block that verifies against the key directory"
   }) as typeof globalThis.fetch;
   const r = await verifyDocument(out, { fetch });
   assert.equal(r.signatures[0]!.status, "valid", r.signatures[0]!.message);
+});
+
+async function requiresUv(pk: PasskeyRecord): Promise<string> {
+  const bob = await generateEd25519();
+  return (await signDocument("# Contract\n\nPay 100.\n", { signer: bob.signer, method: "tofu", signerId: "bob", require: [`tofu:alice user_verified pubkey=es256:${pk.key}`] })).text;
+}
+
+test("a document that requires user verification asks the signing page for it", async () => {
+  const pk = await connect();
+  const text = await requiresUv(pk);
+  let asked: URL | undefined;
+  useSigningPage(undefined, undefined, undefined, (u) => (asked = u));
+  const out = await signWithPasskey(text, pk, request({ role: "" }), "contract.md");
+  assert.equal(asked?.searchParams.get("user_verification"), "required");
+  const r = await verifyDocument(out, { offline: true });
+  assert.equal(r.signatures[1]!.status, "valid", r.signatures[1]!.message);
+});
+
+test("a passkey answer without user verification is refused when it is required", async () => {
+  const pk = await connect(0x01);
+  const text = await requiresUv(pk);
+  useSigningPage();
+  await assert.rejects(signWithPasskey(text, pk, request({ role: "" }), "contract.md"), /user verification/);
+});
+
+test("the signer and display name are written in canonical form", async () => {
+  const pk = await connect();
+  useSigningPage();
+  const out = await signWithPasskey("# T\n", pk, request({ method: "dns", signer: "Example.COM", displayName: "Example Corp" }), "t.md");
+  const block = parseDocument(out).chain[0]!;
+  assert.equal(block.fields.signer, "example.com");
+  assert.equal(block.fields.display_name, "Example Corp");
 });

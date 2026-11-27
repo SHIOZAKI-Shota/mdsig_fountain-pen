@@ -1,5 +1,5 @@
 import { Lexer, type Token, type Tokens } from "marked";
-import { parseDocument } from "@mdsig/core";
+import { findHiddenCharacters, parseDocument } from "@mdsig/core";
 
 export type FindingKind = "comment" | "html" | "removed" | "chars" | "linkdef" | "link" | "image";
 
@@ -13,9 +13,8 @@ export const KIND_ORDER: FindingKind[] = ["comment", "removed", "html", "chars",
 
 export const REMOVED_TAGS = new Set(["script", "style", "iframe", "object", "embed", "form", "input", "button", "select", "textarea", "label", "option", "optgroup", "fieldset", "legend", "datalist", "output", "meter", "progress", "dialog", "template", "audio", "video", "source", "track", "picture", "map", "area", "noscript", "link", "meta", "base", "frame", "frameset", "svg", "math"]);
 
-export const HIDDEN_CHARS = new RegExp("[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F\\u007F-\\u009F\\u00AD\\u061C\\u180E\\u200B\\u200E\\u200F\\u2028-\\u202E\\u2060-\\u2069\\uFEFF]", "g");
 const COMMENT = /<!--([\s\S]*?)-->/g;
-const SECTION_MARKER = /^\/?mdsig:section(\s+[A-Za-z0-9_.-]+)?$/;
+const SECTION_MARKER = /^(?:mdsig:section [a-z0-9-]+|\/mdsig:section)$/;
 const OPEN_TAG = /<([A-Za-z][A-Za-z0-9-]*)\b[^>]*>/g;
 const IMG_SRC = /<img\b[^>]*\bsrc\s*=\s*["']?((?:https?:)?\/\/[^"'\s>]+)/gi;
 const DOMAIN = /(?:https?:\/\/)?((?:[a-z0-9-]+\.)+[a-z]{2,})/i;
@@ -30,6 +29,10 @@ const host = (h: string) => h.toLowerCase().replace(/^www\./, "");
 
 export function isSectionMarker(commentBody: string): boolean {
   return SECTION_MARKER.test(commentBody.trim());
+}
+
+export function isSignatureMarker(commentBody: string): boolean {
+  return commentBody.trim() === "mdsig:signatures";
 }
 
 export function linkMismatch(text: string, href: string): string | null {
@@ -61,7 +64,7 @@ function scanHtml(raw: string, line: number, out: Finding[]) {
   let onlyComments = raw;
   for (const m of raw.matchAll(COMMENT)) {
     onlyComments = onlyComments.replace(m[0], "");
-    if (isSectionMarker(m[1]!)) continue;
+    if (isSectionMarker(m[1]!) || isSignatureMarker(m[1]!)) continue;
     out.push({ kind: "comment", line: at(m.index!), text: clip(m[1]!) || "(empty)" });
   }
   const rest = raw.replace(COMMENT, (c) => " ".repeat(c.length));
@@ -77,10 +80,7 @@ export function scanBody(input: string): Finding[] {
   const first = doc.chain[0];
   const body = first ? doc.text.slice(0, first.start) : doc.text;
   const out: Finding[] = [];
-  const lines = body.split("\n");
-  lines.forEach((l, i) => {
-    for (const m of l.matchAll(HIDDEN_CHARS)) out.push({ kind: "chars", line: i + 1, text: codePoint(m[0]) });
-  });
+  for (const h of findHiddenCharacters(body)) if (h.context === null) out.push({ kind: "chars", line: h.line, text: h.codePoint });
   const walk = (tokens: Token[], top: Token, topLine: number) => {
     let cursor = 0;
     for (const t of tokens) {

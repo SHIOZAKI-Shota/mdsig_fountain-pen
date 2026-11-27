@@ -1,5 +1,5 @@
 {
-  "_comment": "PUBLIC TEST KEYS from RFC 8032 Section 7.1. Never use them for real signatures. Verifiers under test must resolve these signers to these keys instead of using the network, use `now` as the current time, serve the URLs in `fetch` from the listed files (\"404\" means an HTTP 404 response), answer TXT lookups from `txt` (absent names do not exist), and resolve relative resources against this directory.",
+  "_comment": "PUBLIC TEST KEYS from RFC 8032 Section 7.1 and SHA-256 of fixed labels. Never use them for real signatures. Verifiers under test must resolve these signers to these keys instead of using the network: dns signers from `dns` (name <selector>._mdsig.<signer>), git-hosting signers from `git-hosting`; use `now` as the current time; serve the URLs in `fetch` from the listed files (\"404\" means an HTTP 404 response, URLs not listed fail as network errors); answer DNS TXT queries (DoH) from `dns_records`: a list of TXT strings is the answer ([] is NODATA), \"SERVFAIL\" is a server failure, and names not listed are NXDOMAIN; resolve relative resources against this directory.",
   "git-hosting": {
     "github.com/alice": {
       "seed_hex": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
@@ -15,6 +15,26 @@
     "2026._mdsig.tagged.example": {
       "seed_hex": "4ccd089b28ff96da9db6c346ec114e0f5b8a319f35aba624da8cf6ed4fb8a6fb",
       "txt": "v=mdsig1; k=ed25519; x=future; p=PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw=; dir=https://keys.example.org"
+    },
+    "2026._mdsig.a.example.com": {
+      "seed_hex": "c8c37ab97cf3c09bb1ffa070ebbc2dd336f1a4d7afb53afc5afc94a51fe2762f",
+      "txt": "v=mdsig1; k=ed25519; p=/CNciP+W8h5sQ/ttbn5dVfRuZ5oS15s+gzwZmir0O9Y="
+    },
+    "2026._mdsig.b.example.com": {
+      "seed_hex": "48a3b7157ae60f9f7a6b5555d289df23e7f5f9960f1405a4218eff09aa85b3eb",
+      "txt": "v=mdsig1; k=ed25519; p=XbQsbBTokOEqU2RxkrcJ7LhZ7t+CJeHe80e2ZnmJsSI="
+    },
+    "2026._mdsig.badexample.com": {
+      "seed_hex": "e26b4908d2969c25011eeeaa8268a0d43ff3ed972dc2955f11009895a0f5820a",
+      "txt": "v=mdsig1; k=ed25519; p=wf2ittxC2lyxibTCsM2hFs3LwAJtBks+HAD+4uT6EW0="
+    },
+    "2026._mdsig.agent.example": {
+      "seed_hex": "a93d09a1c30f8d1bd72df2cdbcf7c3343e6fd7b89958ac8691b1ac8aabe0d0d1",
+      "txt": "v=mdsig1; k=ed25519; p=1rHomXC4NhrA5knwums1VL9f46EIvsjd6sw1jxy9sk4="
+    },
+    "2026._mdsig.xn--fsqu00a.example": {
+      "seed_hex": "f3ffa25fe4ca1a800fbbd5e3752243811b6eb82201aa14915b8faaffe986b2f1",
+      "txt": "v=mdsig1; k=ed25519; p=bFV7onICS+8TZOjYXLgGfZV811S23XTRsRUcmyvx0rs="
     }
   },
   "directory": {
@@ -44,14 +64,21 @@
       "note": "_mdsig.multi.example names two directories"
     }
   },
-  "txt": {
+  "dns_records": {
     "_mdsig.corp.example": [
       "v=mdsig1; dir=https://keys.corp.example"
     ],
     "_mdsig.multi.example": [
       "v=mdsig1; dir=https://keys.one.example",
       "v=mdsig1; dir=https://keys.two.example"
-    ]
+    ],
+    "zyjnbt5iuukqrpbqryna3zkgv3n5zpgouvyzfud5cx2odbzcbrdq._member._mdsig.corp.example": [
+      "v=mdsig1; m=dns:a.example.com"
+    ],
+    "k2enrukmw6zoudjeqnzxcwpohialonytacokcewqavhiisoc6iia._member._mdsig.corp.example": [
+      "v=mdsig1; m=dns:someone.example"
+    ],
+    "zyjnbt5iuukqrpbqryna3zkgv3n5zpgouvyzfud5cx2odbzcbrdq._member._mdsig.broken.example": "SERVFAIL"
   },
   "tofu": {
     "bob@laptop": {
@@ -124,6 +151,12 @@
   "now": "2026-12-01T00:00:00Z",
   "fetch": {
     "https://example.com/.well-known/mdsig-revoked.md": "revocation/example.com.md",
+    "https://example.com/members.md": "lists/members.md",
+    "https://example.com/wrong-type.md": "lists/wrong-type.md",
+    "https://example.com/bad-line.md": "lists/bad-line.md",
+    "https://example.com/two-fences.md": "lists/two-fences.md",
+    "https://example.com/scoped-issuer.md": "lists/scoped-issuer.md",
+    "https://example.com/other-issuer.md": "lists/other-issuer.md",
     "https://example.org/.well-known/openpgpkey/hu/z9g983skpuzwkib59q4zknqjfmsjwqx5?l=dave": "pgp/dave.pub.asc",
     "https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0xDC169A0E529FF31AB87FC0B8EF37BA0F059AD959": "pgp/dave.pub.asc",
     "https://example.org/.well-known/mdsig-revoked.md": "revocation/dave.md",

@@ -1,4 +1,4 @@
-import type { Layout, LineRange } from "./ranges.ts";
+import type { DocumentLayout as Layout, LineRange } from "@mdsig/core";
 
 export type LockKind = "free" | "scoped" | "full";
 

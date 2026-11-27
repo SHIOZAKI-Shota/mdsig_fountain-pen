@@ -13,7 +13,7 @@ This agreement is made between **Example Corp** ("Provider") and **Alice** ("Cli
 日本語の本文も UTF-8 でそのまま署名されます。
 
 <!-- md-signature
-v: 0.0.2
+v: 0.1
 method: pgp
 signer: dave@example.org
 fpr: DC169A0E529FF31AB87FC0B8EF37BA0F059AD959
@@ -24,7 +24,7 @@ revocation_url: https://example.org/.well-known/mdsig-revoked.md
 alg: openpgp
 hash: sha256:f06c734545219e83074ab04481e4b4715054a8f1ac88367c90d2ce24bc76705c
 sig: |
-  base64:wnUEABYIAB0FAmr6xhAWIQTcFpoOUp/zGrh/wLjvN7oPBZrZWQAKCRDvN7oPBZrZWZKJA
-  QDFeuEWlDNQogZuxkHyd7DovoDKQi5dc8BU8pwLPRw5EAD/UpHXVyGM2x8wCEtZWmdzUlceVrOwo
-  CxL6jk69mKPZgw=
+  base64:wnUEABYIAB0FAmr6xhAWIQTcFpoOUp/zGrh/wLjvN7oPBZrZWQAKCRDvN7oPBZrZWejHA
+  QDTiaW3WSRKAbezMQTSrWG6p7q9cZSB32Ltp0blOeT9owEA0tggxSHMP15+RQ1CRU4i1MkinpVQV
+  bYkI4oky/9FdAY=
 -->

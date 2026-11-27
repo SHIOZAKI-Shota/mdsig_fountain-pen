@@ -20,7 +20,7 @@ export function setHandoffOpener(f: (url: string) => Promise<void>) {
   opener = f;
 }
 
-export const waiting = reactive({ current: null as null | { state: string; host: string; op: "key" | "sign" } });
+export const waiting = reactive({ current: null as null | { state: string; host: string; op: "key" | "sign"; userVerification: boolean } });
 
 export class HandoffCancelled extends Error {}
 
@@ -29,7 +29,7 @@ export const transport: HandoffTransport = (req: HandoffRequest) => {
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => finish(req.state, null, new HandoffCancelled(t("The signing page did not answer in time."))), TIMEOUT);
     pending.set(req.state, { resolve, reject, timer });
-    waiting.current = { state: req.state, host: u.hostname, op: u.searchParams.get("op") === "key" ? "key" : "sign" };
+    waiting.current = { state: req.state, host: u.hostname, op: u.searchParams.get("op") === "key" ? "key" : "sign", userVerification: u.searchParams.get("user_verification") === "required" };
     opener(req.url).catch((e) => finish(req.state, null, new Error(String(e))));
   });
 };
@@ -72,6 +72,7 @@ export async function viaPage<T>(f: () => Promise<T>): Promise<T> {
       if (e.code === "bad-response") throw new Error(t("The signing page did not answer this request correctly."));
       throw new Error(t("The signing page refused the request ({0}).", e.code));
     }
+    if (e instanceof SignError && /user verification was required/.test(e.message)) throw new Error(t("This document asks for user verification, but the passkey signed without it. Sign again and unlock the passkey with your fingerprint, face, or PIN."));
     if (e instanceof SignError && /does not verify/.test(e.message)) throw new Error(t("The signature from the signing page does not verify."));
     throw e;
   }

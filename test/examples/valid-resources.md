@@ -17,18 +17,18 @@ This agreement is made between **Example Corp** ("Provider") and **Alice** ("Cli
 ![Remote chart](https://example.com/chart.png)
 
 <!-- md-signature
-v: 0.0.2
+v: 0.1
 method: tofu
 signer: bob@laptop
 pubkey: ed25519:/FHNjmIYoaONpH7QAjDwWAgW7RO6MwOsXeuRFUiQgCU=
 role: author
 ts: 2026-11-16T09:00:00Z
 resources: |
-  sha256:726527903e29c956caae89a778984a2d2f0fa968395c15244ee9e42238c628b1 ./assets/diagram.svg
-  sha256:3e79b1fe9fa139e318b8151e2308f8c6a5fc300b0ac33243dfd52616aa86b39c https://example.com/chart.png
+  assets/diagram.svg hash=sha256:726527903e29c956caae89a778984a2d2f0fa968395c15244ee9e42238c628b1
+  https://example.com/chart.png hash=sha256:3e79b1fe9fa139e318b8151e2308f8c6a5fc300b0ac33243dfd52616aa86b39c
 alg: ed25519
 hash: sha256:96157b296679271abe9b2dda0979f7c1b2046c9027545f829c77f75574b8db67
 sig: |
-  base64:YYwb04lHlitdYKpNKHvA9HDyACJTCJiZDeojNTlyP9odQs7ORRaKyp2F0MqGOtEs835CB
-  D97rITXemODcfulBQ==
+  base64:9zwKIHvrMLV5Iue/1/eREfwqJMjOcKiIiCp4+13brcTulN8iTml9v8v4K8HOEvQjtXPKm
+  JtRrklC+gKeFyVLBA==
 -->

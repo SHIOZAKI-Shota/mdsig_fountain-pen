@@ -1,7 +1,7 @@
 {
   "name": "mdsig-fountain-pen",
   "productName": "md-signature Fountain Pen",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "@fontsource-variable/geist-mono": "5.3.0",
     "@fontsource-variable/m-plus-2": "5.3.1",
     "@lezer/highlight": "1.2.5",
-    "@mdsig/core": "0.0.5",
+    "@mdsig/core": "0.1.1",
     "@tauri-apps/api": "2.12.5",
     "@tauri-apps/plugin-clipboard-manager": "2.5.0",
     "@tauri-apps/plugin-dialog": "2.8.4",

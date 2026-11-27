@@ -6,6 +6,7 @@ import { documentFetch, netFetch } from "./net.ts";
 import { settings } from "./settings.ts";
 import { native } from "./native.ts";
 import { registrationDirectory, storedKeyDirectories } from "./directories.ts";
+import { signerId } from "../lib/input.ts";
 
 export type SignMethod = Method;
 
@@ -13,6 +14,7 @@ export interface SignRequest {
   method: SignMethod;
   signer: string;
   role: string;
+  displayName: string;
   reason: string;
   timestamp: boolean;
   tsaUrl: string;
@@ -32,8 +34,9 @@ function signOptions(r: SignRequest): Omit<SignOptions, "signer"> {
   const require = r.require.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   return {
     method: r.method,
-    signerId: r.signer.trim(),
+    signerId: signerId(r),
     ...(r.role ? { role: r.role } : {}),
+    ...(r.displayName.trim() ? { displayName: r.displayName.trim() } : {}),
     ...(r.reason.trim() ? { reason: r.reason.trim() } : {}),
     ...(r.expires ? { expires: expiresAt(r.expires) } : {}),
     ...(r.scope.length ? { scope: r.scope } : {}),

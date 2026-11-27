@@ -13,20 +13,20 @@ This agreement is made between **Example Corp** ("Provider") and **Alice** ("Cli
 日本語の本文も UTF-8 でそのまま署名されます。
 
 <!-- md-signature
-v: 0.0.2
+v: 0.1
 method: git-hosting
 signer: github.com/alice
 key_fp: SHA256:bbXpuKG6zhzdmnxq256TlqzFBzRl2f6OOg722cYNbU8
 role: author
 ts: 2026-11-16T09:00:00Z
 require: |
-  step 1 any 4
-  tofu:bob@laptop
-  tofu:carol@laptop
-  tofu:dave@laptop
+  step any=4
+    tofu:bob@laptop
+    tofu:carol@laptop
+    tofu:dave@laptop
 alg: ed25519
 hash: sha256:f06c734545219e83074ab04481e4b4715054a8f1ac88367c90d2ce24bc76705c
 sig: |
-  base64:eslJiViPStdQfZRuIQMnsWjhGXHQ3YffCfAZNDyjQBiBoRzAMyO26pSeGrMR7YJFih5+f
-  rKdOvH+5qCr6VQEBg==
+  base64:63NhvZUgzYuHb6diLJEPCeX1LhYxbbwlJhM2OD0zfzsC0eM+julcKuomTg3ZsW6CnWLTk
+  tOrGEv41sUQDi7uCA==
 -->

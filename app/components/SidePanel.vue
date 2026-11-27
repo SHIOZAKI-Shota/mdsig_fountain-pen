@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { mark, signerLabel, statusText, summarize, summaryText, summaryTone, tone } from "../lib/present.ts";
+import { coreText, declaredName, mark, requirementText, signerLabel, statusText, summarize, summaryMark, summaryText, summaryTone, tone } from "../lib/present.ts";
 import { t } from "../lib/i18n.ts";
 import { state, dirty, save, setText, verifyNow, notify } from "../services/doc.ts";
 import { tr, lang } from "../services/lang.ts";
@@ -15,14 +15,24 @@ const seal = computed(() => {
   if (!e) return { tone: "muted", mark: "…", title: tr("Checking…"), detail: "" };
   const k = summarize(e.result);
   const s = summaryText(t, e.result);
-  return { tone: summaryTone(k), mark: k === "verified" ? "✓" : k === "pending" ? "…" : k === "offline" || k === "unsigned" ? "−" : k === "incomplete" ? "?" : "✗", ...s };
+  return { tone: summaryTone(k), mark: summaryMark(k), ...s };
 });
 const sigs = computed(() => {
   void lang.value;
-  return (state.entry?.result.signatures ?? []).map((s) => ({ index: s.index, tone: tone(s), mark: mark(s), who: signerLabel(s), role: s.fields.role, status: statusText(t, s) }));
+  return (state.entry?.result.signatures ?? []).map((s) => ({ index: s.index, tone: tone(s), mark: mark(s), name: declaredName(t, s), who: signerLabel(s), role: s.fields.role, status: statusText(t, s) }));
 });
 const signed = computed(() => (state.entry?.result.signatures.length ?? 0) > 0);
-const missing = computed(() => state.entry?.result.agreement.missing ?? []);
+const next = computed(() => {
+  void lang.value;
+  return (state.entry?.result.agreement.next ?? []).map((n) => ({
+    label: n.candidates.length > n.need ? tr("{0} of these", n.need) : "",
+    lines: n.candidates.map((r) => requirementText(r)),
+  }));
+});
+const warnings = computed(() => {
+  void lang.value;
+  return (state.entry?.result.warnings ?? []).map(coreText);
+});
 
 async function addTimestamp() {
   const d = state.doc;
@@ -45,6 +55,10 @@ async function addTimestamp() {
       <div>{{ seal.title }}<span v-if="seal.detail" class="sub">{{ seal.detail }}</span></div>
     </div>
     <p v-if="state.entry && !state.entry.online" class="note">{{ settings.network ? tr("Checked without the network while editing. The signers' keys are checked when you save or press Verify again.") : tr("Network checks are turned off in Settings, so the signers' keys were not checked.") }}</p>
+    <div v-if="warnings.length" class="warnings">
+      <b>{{ tr("Warnings") }}</b>
+      <ul><li v-for="(w, i) in warnings" :key="i">{{ w }}</li></ul>
+    </div>
     <NewKeys />
     <FindingsList />
     <div class="actions">
@@ -58,17 +72,18 @@ async function addTimestamp() {
       <ul class="minisigs">
         <li v-for="s in sigs" :key="s.index" :class="hue(s.index, s.tone)">
           <span class="mk">{{ s.mark }}</span>
-          <span class="who">#{{ s.index }} {{ s.who }}<span v-if="s.role"> · {{ s.role }}</span></span>
+          <span class="who">#{{ s.index }} <span v-if="s.name" class="declared">{{ s.name }} </span>{{ s.who }}<span v-if="s.role"> · {{ s.role }}</span></span>
           <span class="st">{{ s.status }}</span>
         </li>
       </ul>
     </template>
-    <template v-if="missing.length">
+    <template v-if="next.length">
       <h3>{{ tr("Still needed") }}</h3>
-      <ul class="minisigs">
-        <li v-for="(m, i) in missing" :key="i" class="t-warn">
+      <ul v-for="(n, i) in next" :key="i" class="minisigs">
+        <li v-if="n.label" class="t-warn"><span class="mk">…</span><span class="who">{{ n.label }}</span></li>
+        <li v-for="(l, j) in n.lines" :key="j" class="t-warn">
           <span class="mk">○</span>
-          <span class="who">{{ m.signer }}<span v-if="m.role"> · {{ m.role }}</span></span>
+          <span class="who">{{ l }}</span>
         </li>
       </ul>
     </template>

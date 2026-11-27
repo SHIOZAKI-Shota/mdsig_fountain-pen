@@ -5,9 +5,9 @@ import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { markdown } from "@codemirror/lang-markdown";
 import { highlightSelectionMatches, searchKeymap } from "@codemirror/search";
 import { tags } from "@lezer/highlight";
-import { layout } from "../lib/ranges.ts";
 import { locks, lockedSpans, touches, type Locks, type Span } from "../lib/locks.ts";
-import { HIDDEN_CHARS, codePoint } from "../lib/findings.ts";
+import { codePoint } from "../lib/findings.ts";
+import { HIDDEN_CHARACTER_RE, documentLayout as layout } from "@mdsig/core";
 
 export const external = Annotation.define<boolean>();
 
@@ -121,7 +121,7 @@ export function editorExtensions(text: string, onChange: (text: string) => void,
     EditorState.lineSeparator.of(text.includes("\r\n") ? "\r\n" : "\n"),
     lineNumbers(),
     highlightSpecialChars({
-      specialChars: new RegExp(HIDDEN_CHARS.source, "g"),
+      specialChars: new RegExp(HIDDEN_CHARACTER_RE.source, "gu"),
       render: (code) => {
         const s = document.createElement("span");
         s.className = "cm-hidden-char";

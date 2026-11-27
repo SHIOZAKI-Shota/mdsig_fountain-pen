@@ -209,8 +209,8 @@ pub fn read_resource(
         return Err("unknown document".into());
     }
     let rel = Path::new(&reference);
-    // security: the core already rejects these; checked again so a bad ref cannot leave the folder
-    if rel.components().any(|c| !matches!(c, Component::Normal(_))) {
+    // security: the core passes a decoded path and already rejects these; checked again so a bad path cannot leave the folder, name a drive, or reach an NTFS alternate data stream
+    if reference.contains([':', '\\']) || rel.components().any(|c| !matches!(c, Component::Normal(_))) {
         return Err("bad reference".into());
     }
     let dir = doc

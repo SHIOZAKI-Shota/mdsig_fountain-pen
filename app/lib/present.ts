@@ -1,6 +1,16 @@
-import type { BlockResult, VerifyResult } from "@mdsig/core";
+import { describeRequirement, documentVerdict, localizeMessage, type BlockResult, type DeclarationStatus, type Lang, type OrderMode, type RejectReason, type Requirement, type VerifyResult } from "@mdsig/core";
 
 export type T = (message: string, ...args: (string | number)[]) => string;
+
+let messageLang: Lang = "en";
+
+export function setMessageLang(lang: Lang) {
+  messageLang = lang;
+}
+
+export function coreText(text: string): string {
+  return localizeMessage(text, messageLang);
+}
 
 export type Tone = "ok" | "bad" | "warn" | "muted";
 
@@ -84,29 +94,37 @@ export function signerLabel(s: BlockResult): string {
   return f.method === "tsa" ? (s.tsa?.signer ?? f.signer ?? "") : (f.signer ?? "");
 }
 
+export function declaredName(t: T, s: BlockResult): string {
+  return s.fields.display_name ? t("“{0}” (self-declared)", s.fields.display_name) : "";
+}
+
+export function timeText(t: T, s: BlockResult): string | undefined {
+  if (s.fields.method === "tsa") return s.tsa?.verified && s.tsa.genTime ? s.tsa.genTime : undefined;
+  return s.time ? t("{0} (timestamp #{1})", s.time.at, s.time.block) : undefined;
+}
+
 export function lensText(t: T, s: BlockResult): string {
   const f = s.fields;
-  const parts = [`${mark(s)} #${s.index}`, f.role ?? "", signerLabel(s), "·", methodLabel(t, f.method)];
-  if (s.tsa?.verified && s.tsa.genTime) parts.push("·", `⏱ ${s.tsa.genTime}`);
+  const parts = [`${mark(s)} #${s.index}`, f.role ?? "", declaredName(t, s), signerLabel(s), "·", methodLabel(t, f.method)];
+  const at = s.fields.method === "tsa" ? timeText(t, s) : s.time?.at;
+  if (at) parts.push("·", `⏱ ${at}`);
   if (s.status !== "valid") parts.push("·", statusText(t, s));
   return parts.filter(Boolean).join(" ");
 }
 
-export type Summary = "verified" | "pending" | "violated" | "failed" | "incomplete" | "offline" | "unsigned" | "broken";
+export type Summary = "verified" | "pending" | "violated" | "unsupported" | "undetermined" | "failed" | "incomplete" | "offline" | "unsigned" | "broken";
 
 export function summarize(r: VerifyResult): Summary {
-  if (r.signatures.length === 0) return r.error && /unsigned content/.test(r.error) ? "broken" : "unsigned";
-  if (r.signatures.some((s) => s.status === "invalid" || s.status === "malformed" || s.status === "unsupported")) return "failed";
-  if (r.error) return "broken";
-  if (r.agreement.status === "violated") return "violated";
-  const unresolved = r.signatures.filter((s) => s.status === "unresolved");
-  if (unresolved.length) return unresolved.every((s) => s.code === "offline") ? "offline" : "incomplete";
-  if (r.agreement.status === "pending") return "pending";
-  return "verified";
+  const k = documentVerdict(r).kind;
+  return k === "valid" ? "verified" : k === "unresolved" ? "incomplete" : k;
 }
 
 export function summaryTone(k: Summary): Tone {
-  return k === "verified" ? "ok" : k === "pending" || k === "incomplete" ? "warn" : k === "offline" || k === "unsigned" ? "muted" : "bad";
+  return k === "verified" ? "ok" : k === "pending" || k === "incomplete" || k === "undetermined" ? "warn" : k === "offline" || k === "unsigned" ? "muted" : "bad";
+}
+
+export function summaryMark(k: Summary): string {
+  return k === "verified" ? "✓" : k === "pending" ? "…" : k === "offline" || k === "unsigned" ? "−" : k === "incomplete" || k === "undetermined" ? "?" : "✗";
 }
 
 export function summaryText(t: T, r: VerifyResult): { title: string; detail: string } {
@@ -120,6 +138,10 @@ export function summaryText(t: T, r: VerifyResult): { title: string; detail: str
       return { title: t("Waiting for signatures"), detail: t("{0} more signature(s) needed to complete", Math.max(missing, 1)) };
     case "violated":
       return { title: t("Not verified"), detail: t("Signatures were made out of the required order") };
+    case "unsupported":
+      return { title: t("Not verified"), detail: t("The required signatures use rules this version does not support") };
+    case "undetermined":
+      return { title: t("Could not fully check"), detail: t("A member list or the network needed to check the required signatures was not available") };
     case "failed": {
       const bad = r.signatures.filter((s) => s.status !== "valid" && s.status !== "unresolved").length;
       return { title: t("Not verified"), detail: t("{0} of {1} signatures failed", bad, n) };
@@ -135,4 +157,52 @@ export function summaryText(t: T, r: VerifyResult): { title: string; detail: str
     default:
       return { title: t("Not signed"), detail: t("This document has no signatures") };
   }
+}
+
+export function requirementText(r: Pick<Requirement, "method" | "signer" | "pattern" | "attributes">): string {
+  return describeRequirement(r, messageLang);
+}
+
+export function rejectText(t: T, index: number, reason: RejectReason): string {
+  switch (reason) {
+    case "early":
+      return t("#{0} came before the previous step was complete", index);
+    case "blocked":
+      return t("#{0} already counts for an earlier step", index);
+    case "not-member":
+      return t("#{0} is not on the member list", index);
+    case "roster-unavailable":
+      return t("#{0}: the member list could not be obtained", index);
+    case "not-user-verified":
+      return t("#{0} was signed without user verification", index);
+    case "key-mismatch":
+      return t("#{0} uses a different key than the one required", index);
+    case "self":
+      return t("#{0} is the signer who set the requirement and does not count", index);
+    case "scoped":
+      return t("#{0} covers only part of the document", index);
+    case "unresolved":
+      return t("#{0} could not be checked yet", index);
+    default:
+      return t("#{0} is not a valid signature", index);
+  }
+}
+
+export function declarationText(t: T, status: DeclarationStatus): string {
+  switch (status) {
+    case "complete":
+      return t("Complete");
+    case "pending":
+      return t("Waiting for signatures");
+    case "violated":
+      return t("Signatures were made out of the required order");
+    case "undetermined":
+      return t("Could not be determined");
+    default:
+      return t("Uses rules this version does not support");
+  }
+}
+
+export function orderText(t: T, order: OrderMode): string | undefined {
+  return order === "strict" ? t("Order is enforced: an early signature fails the document") : order === "guide" ? t("Order is a guide: early signatures count but are reported") : undefined;
 }

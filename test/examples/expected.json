@@ -3,41 +3,601 @@
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-cosigned.md": {
     "ok": true,
     "signatures": [
       "valid",
+      "valid",
       "valid"
     ],
     "tsa": [
       null,
+      null,
       "ok"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": "2026-11-27T04:28:16Z",
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:46:00Z",
+        "time": "2026-11-27T04:28:16Z",
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      "2026-11-27T04:28:16Z",
+      "2026-11-27T04:28:16Z",
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-crlf.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "tampered.md": {
     "ok": false,
     "signatures": [
       "invalid:hash-mismatch"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "hash-mismatch",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "tampered-metadata.md": {
     "ok": false,
     "signatures": [
       "invalid:bad-signature"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "unsigned-trailer.md": {
     "ok": false,
     "signatures": [],
-    "error": "unsigned-content"
+    "error": "unsigned-content",
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [],
+    "times": [],
+    "marker": null,
+    "verdict": "broken"
+  },
+  "valid-double-hyphen.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "malformed-value-comment-close.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-signer-uppercase.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "Example.com",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-signer-star.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob*@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "valid-xn-signer.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "xn--fsqu00a.example",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "valid-display-name.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "Bob Example (営業部)",
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "malformed-display-name.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名名",
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-zero-width.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-trailing-space-folded.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "unclosed-fence.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "warnings": [
+      "the body ends inside an open code fence, so Markdown renderers show the signature blocks as code"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-resources.md": {
     "ok": true,
@@ -49,19 +609,595 @@
         "ok",
         "not-checked"
       ]
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "valid-resource-query.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "resources": [
+      [
+        "not-checked"
+      ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-declarer-unresolved.md": {
+    "ok": false,
+    "signatures": [
+      "unresolved:network",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "the declaring block was not checked (network)",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "zoe@mail.example",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "network",
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
+  },
+  "require-rejected-reasons.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "unresolved:not-found",
+      "invalid:bad-signature"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "nokey.example",
+          "pattern": false,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "nokey.example",
+          "pattern": false,
+          "attributes": {},
+          "need": 2,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "unresolved"
+            }
+          ]
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          },
+          "need": 2,
+          "rejected": [
+            {
+              "index": 3,
+              "reason": "not-valid"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 2,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "nokey.example",
+              "pattern": false,
+              "attributes": {}
+            },
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 2,
+              "method": "dns",
+              "signer": "example.com",
+              "pattern": false,
+              "attributes": {
+                "role": "approver"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 2,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                },
+                {
+                  "line": 2,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "nokey.example",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:10:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "approver",
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "nokey.example",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 2,
+        "pattern": false,
+        "attributes": {}
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "approver",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 2,
+        "pattern": false,
+        "attributes": {
+          "role": "approver"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "tampered-resource.md": {
     "ok": false,
     "signatures": [
       "invalid:resource-mismatch"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "resource-mismatch",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "missing-resource.md": {
     "ok": false,
     "signatures": [
       "invalid:resource-missing"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "resource-missing",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "valid-resource-percent.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "resources": [
+      [
+        "ok"
+      ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "malformed-resource-percent.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-resource-colon.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "valid-scoped-edited.md": {
     "ok": true,
@@ -73,26 +1209,248 @@
         "terms",
         "fees"
       ]
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": [
+          "terms",
+          "fees"
+        ]
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "tampered-scoped.md": {
     "ok": false,
     "signatures": [
       "invalid:hash-mismatch"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "hash-mismatch",
+        "partial": [
+          "terms",
+          "fees"
+        ]
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "malformed-unclosed-section.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pending-require.md": {
     "ok": true,
     "signatures": [
       "valid"
     ],
-    "agreement": "pending"
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          },
+          "need": 1,
+          "rejected": []
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "example.com",
+              "pattern": false,
+              "attributes": {
+                "role": "approver"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "approver",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "approver"
+        }
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
   },
   "complete-require.md": {
     "ok": true,
@@ -100,7 +1458,97 @@
       "valid",
       "valid"
     ],
-    "agreement": "complete"
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:46:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "pending-require-scoped.md": {
     "ok": true,
@@ -114,7 +1562,152 @@
       [
         "terms"
       ]
-    ]
+    ],
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "scoped"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "example.com",
+              "pattern": false,
+              "attributes": {
+                "role": "approver"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:46:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": [
+          "terms"
+        ]
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "approver",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "approver"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
   },
   "require-serial-complete.md": {
     "ok": true,
@@ -123,7 +1716,146 @@
       "valid",
       "valid"
     ],
-    "agreement": "complete"
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "reviewer"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 4,
+          "index": 3
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "reviewer",
+        "ts": "2026-11-16T09:40:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "require-serial-pending.md": {
     "ok": true,
@@ -132,7 +1864,200 @@
       "valid",
       "valid"
     ],
-    "agreement": "pending"
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "reviewer"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "reviewer"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "early"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 2,
+              "any": null,
+              "line": 4,
+              "method": "tofu",
+              "signer": "bob@laptop",
+              "pattern": false,
+              "attributes": {
+                "role": "reviewer"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 3
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "reviewer",
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "reviewer",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 2,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "reviewer"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
   },
   "require-serial-guide.md": {
     "ok": true,
@@ -141,7 +2066,156 @@
       "valid",
       "valid"
     ],
-    "agreement": "complete"
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 3,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 5,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "reviewer"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 5,
+          "index": 2,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "order": "guide"
+        }
+      ],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 3,
+          "index": 3
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 5,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "guide",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 3,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 5,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "reviewer",
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "require-serial-strict.md": {
     "ok": false,
@@ -150,7 +2224,156 @@
       "valid",
       "valid"
     ],
-    "agreement": "violated"
+    "agreement": "violated",
+    "agreement_json": {
+      "status": "violated",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 3,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "approver"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 5,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "reviewer"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 5,
+          "index": 2,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "order": "strict"
+        }
+      ],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 3,
+          "index": 3
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 5,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "strict",
+          "status": "violated",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 3,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 5,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "reviewer",
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "violated"
   },
   "require-any-pending.md": {
     "ok": true,
@@ -158,7 +2381,215 @@
       "valid",
       "valid"
     ],
-    "agreement": "pending"
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 2,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 3,
+          "method": "tofu",
+          "signer": "carol@laptop",
+          "pattern": false,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 4,
+          "method": "tofu",
+          "signer": "dave@laptop",
+          "pattern": false,
+          "attributes": {}
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 3,
+          "method": "tofu",
+          "signer": "carol@laptop",
+          "pattern": false,
+          "attributes": {},
+          "need": 1,
+          "rejected": []
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 4,
+          "method": "tofu",
+          "signer": "dave@laptop",
+          "pattern": false,
+          "attributes": {},
+          "need": 1,
+          "rejected": []
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": 2,
+              "line": 3,
+              "method": "tofu",
+              "signer": "carol@laptop",
+              "pattern": false,
+              "attributes": {}
+            },
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": 2,
+              "line": 4,
+              "method": "tofu",
+              "signer": "dave@laptop",
+              "pattern": false,
+              "attributes": {}
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": 2,
+              "need": 2,
+              "count": 1,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                },
+                {
+                  "line": 3,
+                  "blocks": []
+                },
+                {
+                  "line": 4,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {}
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "dave@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {}
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
   },
   "require-any-complete.md": {
     "ok": true,
@@ -167,52 +2598,3854 @@
       "valid",
       "valid"
     ],
-    "agreement": "complete"
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 2,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 3,
+          "method": "tofu",
+          "signer": "carol@laptop",
+          "pattern": false,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": 2,
+          "line": 4,
+          "method": "tofu",
+          "signer": "dave@laptop",
+          "pattern": false,
+          "attributes": {}
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 4,
+          "index": 3
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": 2,
+              "need": 2,
+              "count": 2,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                },
+                {
+                  "line": 3,
+                  "blocks": []
+                },
+                {
+                  "line": 4,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "dave@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "malformed-require-steps.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
-  "legacy-v001.md": {
-    "ok": true,
+  "malformed-require-strict-pattern.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "unsupported-require-attribute.md": {
+    "ok": false,
     "signatures": [
       "valid"
     ],
-    "agreement": "pending"
+    "agreement": "unsupported",
+    "agreement_json": {
+      "status": "unsupported",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "unsupported",
+          "detail": "require line 1: unknown attribute \"x_budget\"",
+          "steps": []
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unsupported"
   },
-  "mixed-versions.md": {
+  "require-pattern-subdomain.md": {
     "ok": true,
     "signatures": [
       "valid",
       "valid"
     ],
-    "agreement": "complete"
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
-  "malformed-require-step-v001.md": {
+  "require-pattern-boundary.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "role": "approver"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "role": "approver"
+          },
+          "need": 1,
+          "rejected": []
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "role": "approver"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "badexample.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": "approver",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "role": "approver"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-pattern-self.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {}
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {},
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "self"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {}
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {}
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-greedy-vs-matching.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "a.example.com",
+          "pattern": false,
+          "attributes": {}
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 3
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 2,
+              "count": 2,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    3
+                  ]
+                },
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "b.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-canonical-assignment.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {}
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {}
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 3
+        },
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 2,
+              "count": 2,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    3
+                  ]
+                },
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:20:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "b.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-user-verified-complete.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "tofu",
+          "signer": "carol@passkey",
+          "pattern": false,
+          "attributes": {
+            "role": "approver",
+            "pubkey": "es256:MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEoF8btmeCxm5XPSSdpJCfqLkHcHJmY9sD+yfc99NzbuzRfjQKQNMI0zF3j+iDJ8FbvCsse9hjVJRDRp4neIcqgA==",
+            "user_verified": true
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@passkey",
+        "key_source": "embedded pubkey",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": true,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-user-verified-pending.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "tofu",
+          "signer": "carol@passkey",
+          "pattern": false,
+          "attributes": {
+            "role": "approver",
+            "pubkey": "es256:MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE79xy/UznCuta5yehl5qZQd57teGWEcGVDsJmisvdYZnX0xfybRa6XgU30vJYXaHXuM1amEXAzRJhSn77nnl/hQ==",
+            "user_verified": true
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "tofu",
+          "signer": "carol@passkey",
+          "pattern": false,
+          "attributes": {
+            "role": "approver",
+            "pubkey": "es256:MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE79xy/UznCuta5yehl5qZQd57teGWEcGVDsJmisvdYZnX0xfybRa6XgU30vJYXaHXuM1amEXAzRJhSn77nnl/hQ==",
+            "user_verified": true
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "not-user-verified"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "tofu",
+              "signer": "carol@passkey",
+              "pattern": false,
+              "attributes": {
+                "role": "approver",
+                "pubkey": "es256:MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE79xy/UznCuta5yehl5qZQd57teGWEcGVDsJmisvdYZnX0xfybRa6XgU30vJYXaHXuM1amEXAzRJhSn77nnl/hQ==",
+                "user_verified": true
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@passkey",
+        "key_source": "embedded pubkey",
+        "role": "approver",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": false,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@passkey",
+        "key_source": null,
+        "role": "approver",
+        "ts": null,
+        "time": null,
+        "user_verified": false,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "approver",
+          "pubkey": "es256:MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE79xy/UznCuta5yehl5qZQd57teGWEcGVDsJmisvdYZnX0xfybRa6XgU30vJYXaHXuM1amEXAzRJhSn77nnl/hQ==",
+          "user_verified": true
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-tofu-key-mismatch.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "pubkey": "ed25519:PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw="
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "pubkey": "ed25519:PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw="
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "key-mismatch"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "tofu",
+              "signer": "bob@laptop",
+              "pattern": false,
+              "attributes": {
+                "pubkey": "ed25519:PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw="
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "pubkey": "ed25519:PUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw="
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-member-https.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/members.md"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-member-https-not-member.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/members.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/members.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "not-member"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/members.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "b.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/members.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-member-unreachable.md": {
     "ok": false,
     "signatures": [
-      "malformed:malformed"
-    ]
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://roster.example.net/members.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://roster.example.net/members.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://roster.example.net/members.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://roster.example.net/members.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "roster-wrong-type.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/wrong-type.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/wrong-type.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/wrong-type.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/wrong-type.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "roster-bad-line.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/bad-line.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/bad-line.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/bad-line.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/bad-line.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "roster-two-fences.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/two-fences.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/two-fences.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/two-fences.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/two-fences.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "roster-scoped-issuer.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/scoped-issuer.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/scoped-issuer.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/scoped-issuer.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/scoped-issuer.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "roster-other-issuer.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/other-issuer.md"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "https://example.com/other-issuer.md"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "https://example.com/other-issuer.md"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "https://example.com/other-issuer.md"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "require-member-dns.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "dns:corp.example"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 1,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
+  },
+  "require-member-dns-wildcard.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "dns:corp.example"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "dns:corp.example"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "not-member"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "dns:corp.example"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "b.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "dns:corp.example"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "pending"
+  },
+  "require-member-dns-servfail.md": {
+    "ok": false,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "undetermined",
+    "agreement_json": {
+      "status": "undetermined",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "dns:broken.example"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 1,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "member_of": "dns:broken.example"
+          },
+          "need": 1,
+          "rejected": [
+            {
+              "index": 2,
+              "reason": "roster-unavailable"
+            }
+          ]
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 1,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "member_of": "dns:broken.example"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "undetermined",
+          "detail": "a roster cannot be obtained",
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 1,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": null,
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": null,
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "member_of": "dns:broken.example"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "undetermined"
+  },
+  "table-marker.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "a.example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "buyer"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": 2,
+          "line": 4,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "role": "witness"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": 2,
+          "line": 5,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "witness"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": 2,
+          "line": 4,
+          "method": "dns",
+          "signer": "*.example.com",
+          "pattern": true,
+          "attributes": {
+            "role": "witness"
+          },
+          "need": 2,
+          "rejected": []
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": 2,
+          "line": 5,
+          "method": "tofu",
+          "signer": "bob@laptop",
+          "pattern": false,
+          "attributes": {
+            "role": "witness"
+          },
+          "need": 2,
+          "rejected": []
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "need": 2,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 2,
+              "any": 2,
+              "line": 4,
+              "method": "dns",
+              "signer": "*.example.com",
+              "pattern": true,
+              "attributes": {
+                "role": "witness"
+              }
+            },
+            {
+              "declared_by": 1,
+              "step": 2,
+              "any": 2,
+              "line": 5,
+              "method": "tofu",
+              "signer": "bob@laptop",
+              "pattern": false,
+              "attributes": {
+                "role": "witness"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": 2,
+              "need": 2,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": []
+                },
+                {
+                  "line": 5,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "Example Corp",
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "seller",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": "A Division",
+        "method": "dns",
+        "signer": "a.example.com",
+        "key_source": "keys.json",
+        "role": "buyer",
+        "ts": "2026-11-16T09:30:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*.example.com",
+        "key_source": null,
+        "role": "witness",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 2,
+        "need": 2,
+        "pattern": true,
+        "attributes": {
+          "role": "witness"
+        }
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "witness",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 2,
+        "need": 2,
+        "pattern": false,
+        "attributes": {
+          "role": "witness"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": 3,
+    "verdict": "pending"
+  },
+  "agent-terms.md": {
+    "ok": true,
+    "signatures": [
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "*",
+          "pattern": true,
+          "attributes": {
+            "role": "accept"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "confirm"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "*",
+          "pattern": true,
+          "attributes": {
+            "role": "accept"
+          },
+          "need": 1,
+          "rejected": []
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "confirm"
+          },
+          "need": 1,
+          "rejected": [],
+          "blocked_by": 1
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 1,
+              "any": null,
+              "line": 2,
+              "method": "dns",
+              "signer": "*",
+              "pattern": true,
+              "attributes": {
+                "role": "accept"
+              }
+            }
+          ],
+          "later": [
+            {
+              "step": 2,
+              "need": 1,
+              "lines": [
+                {
+                  "declared_by": 1,
+                  "step": 2,
+                  "any": null,
+                  "line": 4,
+                  "method": "dns",
+                  "signer": "example.com",
+                  "pattern": false,
+                  "attributes": {
+                    "role": "confirm"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "satisfied": [],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": []
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": 1,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "Example Data",
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "offer",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "*",
+        "key_source": null,
+        "role": "accept",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 1,
+        "need": 1,
+        "pattern": true,
+        "attributes": {
+          "role": "accept"
+        }
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "confirm",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 2,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "confirm"
+        }
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": 9,
+    "verdict": "pending"
+  },
+  "agent-accepted.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid"
+    ],
+    "agreement": "pending",
+    "agreement_json": {
+      "status": "pending",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "*",
+          "pattern": true,
+          "attributes": {
+            "role": "accept"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "confirm"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "confirm"
+          },
+          "need": 1,
+          "rejected": []
+        }
+      ],
+      "violations": [],
+      "next": [
+        {
+          "declared_by": 1,
+          "step": 2,
+          "need": 1,
+          "candidates": [
+            {
+              "declared_by": 1,
+              "step": 2,
+              "any": null,
+              "line": 4,
+              "method": "dns",
+              "signer": "example.com",
+              "pattern": false,
+              "attributes": {
+                "role": "confirm"
+              }
+            }
+          ],
+          "later": []
+        }
+      ],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "pending",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 0,
+              "complete": false,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "Example Data",
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "offer",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": "Buyer Agent",
+        "method": "dns",
+        "signer": "agent.example",
+        "key_source": "keys.json",
+        "role": "accept",
+        "ts": "2026-11-16T09:10:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": null,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": "confirm",
+        "ts": null,
+        "time": null,
+        "user_verified": null,
+        "status": "unsigned",
+        "code": null,
+        "partial": null,
+        "declared_by": 1,
+        "step": 2,
+        "need": 1,
+        "pattern": false,
+        "attributes": {
+          "role": "confirm"
+        }
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": 9,
+    "verdict": "pending"
+  },
+  "agent-approved.md": {
+    "ok": true,
+    "signatures": [
+      "valid",
+      "valid",
+      "valid"
+    ],
+    "agreement": "complete",
+    "agreement_json": {
+      "status": "complete",
+      "required": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "any": null,
+          "line": 2,
+          "method": "dns",
+          "signer": "*",
+          "pattern": true,
+          "attributes": {
+            "role": "accept"
+          }
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "any": null,
+          "line": 4,
+          "method": "dns",
+          "signer": "example.com",
+          "pattern": false,
+          "attributes": {
+            "role": "confirm"
+          }
+        }
+      ],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [
+        {
+          "declared_by": 1,
+          "step": 1,
+          "line": 2,
+          "index": 2
+        },
+        {
+          "declared_by": 1,
+          "step": 2,
+          "line": 4,
+          "index": 3
+        }
+      ],
+      "declarations": [
+        {
+          "declared_by": 1,
+          "order": "pending",
+          "status": "complete",
+          "detail": null,
+          "steps": [
+            {
+              "step": 1,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 2,
+                  "blocks": [
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "step": 2,
+              "any": null,
+              "need": 1,
+              "count": 1,
+              "complete": true,
+              "blocked_by": null,
+              "lines": [
+                {
+                  "line": 4,
+                  "blocks": [
+                    3
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": "Example Data",
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "offer",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 2,
+        "display_name": "Buyer Agent",
+        "method": "dns",
+        "signer": "agent.example",
+        "key_source": "keys.json",
+        "role": "accept",
+        "ts": "2026-11-16T09:10:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      },
+      {
+        "number": 3,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "confirm",
+        "ts": "2026-11-16T09:12:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null,
+      null
+    ],
+    "marker": 9,
+    "verdict": "valid"
   },
   "unsupported-version-new-field.md": {
     "ok": false,
     "signatures": [
       "unsupported:unsupported-version"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unsupported",
+        "code": "unsupported-version",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "unsupported-version-v004.md": {
+    "ok": false,
+    "signatures": [
+      "unsupported:unsupported-version"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unsupported",
+        "code": "unsupported-version",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
+  },
+  "malformed-missing-alg.md": {
+    "ok": false,
+    "signatures": [
+      "malformed:malformed"
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "valid-key-snapshot.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "key-not-published.md": {
     "ok": false,
     "signatures": [
       "unresolved:key-not-published"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "github.com/alice",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "key-not-published",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "valid-tsa-block.md": {
     "ok": true,
@@ -223,7 +6456,39 @@
     "tsa": [
       null,
       "ok"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": "2026-11-27T04:28:16Z",
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      "2026-11-27T04:28:16Z",
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-tsa-renewal.md": {
     "ok": true,
@@ -236,26 +6501,153 @@
       null,
       "ok",
       "ok"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": "embedded pubkey",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": "2026-11-27T04:28:16Z",
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      "2026-11-27T04:28:16Z",
+      "2026-11-27T04:28:17Z",
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "tampered-tsa-block.md": {
     "ok": false,
     "signatures": [
       "invalid:hash-mismatch",
       "invalid:hash-mismatch"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "hash-mismatch",
+        "partial": null
+      }
+    ],
+    "times": [
+      null,
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "malformed-duplicate-version.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "expired.md": {
     "ok": false,
     "signatures": [
       "invalid:expired"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "expired",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "not-revoked.md": {
     "ok": true,
@@ -264,97 +6656,593 @@
     ],
     "revocation": [
       "not-revoked"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": "keys.json",
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "revoked.md": {
     "ok": false,
     "signatures": [
       "invalid:revoked"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "example.com",
+        "key_source": null,
+        "role": null,
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "revoked",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "unknown-field.md": {
     "ok": false,
     "signatures": [
       "malformed:unknown-field"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "unknown-field",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "malformed-bidi-control.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "bob@laptop",
+        "key_source": null,
+        "role": "‮author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "malformed-git-hosting-ip.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "git-hosting",
+        "signer": "127.0.0.1/bob",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "valid-webauthn.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@passkey",
+        "key_source": "embedded pubkey",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": true,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "tampered-webauthn.md": {
     "ok": false,
     "signatures": [
       "invalid:bad-signature"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "tofu",
+        "signer": "carol@passkey",
+        "key_source": null,
+        "role": "witness",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": false,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "directory-valid.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "alice@mail.example",
+        "key_source": "key directory https://keys.mdsig.dev (trusted list)",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "directory-snapshot.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "alice@mail.example",
+        "key_source": "key directory https://keys.mdsig.dev (trusted list)",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "directory-passkey.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "carol@mail.example",
+        "key_source": "key directory https://keys.mdsig.dev (trusted list)",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": true,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "directory-key-not-published.md": {
     "ok": false,
     "signatures": [
       "unresolved:key-not-published"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "dave@mail.example",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "key-not-published",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "directory-not-found.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "erin@mail.example",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "directory-domain-delegated.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "frank@corp.example",
+        "key_source": "key directory https://keys.corp.example (named by _mdsig.corp.example)",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "directory-conflicting-dir.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "grace@multi.example",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "malformed-directory-signer.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "directory",
+        "signer": "Alice@mail.example",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "dns-unknown-tag.md": {
     "ok": true,
     "signatures": [
       "valid"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "dns",
+        "signer": "tagged.example",
+        "key_source": "keys.json",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-pgp-ed25519.md": {
     "ok": true,
@@ -366,7 +7254,38 @@
         "keySource": "wkd",
         "keyAlg": "ed25519"
       }
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": "wkd https://example.org/.well-known/openpgpkey/hu/z9g983skpuzwkib59q4zknqjfmsjwqx5?l=dave",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-pgp-v6.md": {
     "ok": true,
@@ -378,7 +7297,38 @@
         "keySource": "keyserver",
         "keyAlg": "ed25519"
       }
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "erin@example.org",
+        "key_source": "keyserver https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x1E79CDA3F204FEF40DE7B7DDC1E564DE2D9677BAB5E768574CA08AB07B092777",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-pgp-p256-subkey.md": {
     "ok": true,
@@ -390,7 +7340,38 @@
         "keySource": "keyserver",
         "keyAlg": "ecdsa-p256"
       }
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "grace@example.org",
+        "key_source": "keyserver https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x1A819392C4BF970EB64479F92B689457188F0F3A",
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-pgp-rsa.md": {
     "ok": true,
@@ -402,7 +7383,38 @@
         "keySource": "keyserver",
         "keyAlg": "rsa2048"
       }
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "frank@example.org",
+        "key_source": "keyserver https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x275E2B9A1BC461282279D5335E7F0C0F098A2BC1",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "valid-pgp-gpg.md": {
     "ok": true,
@@ -414,78 +7426,481 @@
         "keySource": "keyserver",
         "keyAlg": "rsa2048"
       }
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "frank@example.org",
+        "key_source": "keyserver https://keys.openpgp.org/pks/lookup?op=get&options=mr&search=0x275E2B9A1BC461282279D5335E7F0C0F098A2BC1",
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "valid",
+        "code": null,
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "valid"
   },
   "tampered-pgp.md": {
     "ok": false,
     "signatures": [
       "invalid:bad-signature"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "approver",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "malformed-pgp-alg.md": {
     "ok": false,
     "signatures": [
       "malformed:malformed"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "malformed",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-wrong-uid.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "mallory@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "pgp-fpr-mismatch.md": {
     "ok": false,
     "signatures": [
       "invalid:bad-signature"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "erin@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-sha1.md": {
     "ok": false,
     "signatures": [
       "invalid:bad-signature"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "bad-signature",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-revoked-key.md": {
     "ok": false,
     "signatures": [
       "invalid:revoked"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "henry@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "revoked",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-subkey-not-signing.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "ivan@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "pgp-subkey-no-backsig.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "judy@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "pgp-v6-no-direct-key.md": {
     "ok": false,
     "signatures": [
       "unresolved:not-found"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "kate@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "unresolved",
+        "code": "not-found",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "unresolved"
   },
   "pgp-revoked.md": {
     "ok": false,
     "signatures": [
       "invalid:revoked"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "revoked",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-revoked-malleated.md": {
     "ok": false,
     "signatures": [
       "invalid:revoked"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "invalid",
+        "code": "revoked",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   },
   "pgp-keyserver-field.md": {
     "ok": false,
     "signatures": [
       "malformed:unknown-field"
-    ]
+    ],
+    "agreement": "none",
+    "agreement_json": {
+      "status": "none",
+      "required": [],
+      "missing": [],
+      "violations": [],
+      "next": [],
+      "satisfied": [],
+      "declarations": []
+    },
+    "table": [
+      {
+        "number": 1,
+        "display_name": null,
+        "method": "pgp",
+        "signer": "dave@example.org",
+        "key_source": null,
+        "role": "author",
+        "ts": "2026-11-16T09:00:00Z",
+        "time": null,
+        "user_verified": null,
+        "status": "malformed",
+        "code": "unknown-field",
+        "partial": null
+      }
+    ],
+    "times": [
+      null
+    ],
+    "marker": null,
+    "verdict": "failed"
   }
 }

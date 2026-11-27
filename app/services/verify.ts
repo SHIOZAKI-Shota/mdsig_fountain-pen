@@ -1,5 +1,5 @@
 import { keyFingerprint, verifyDocument, type TofuStore, type VerifyOptions, type VerifyResult } from "@mdsig/core";
-import { layout } from "../lib/ranges.ts";
+import { documentLayout as layout } from "@mdsig/core";
 import type { Entry, NewKey } from "../lib/entry.ts";
 import { native, readJson } from "./native.ts";
 import { documentFetch } from "./net.ts";
@@ -95,15 +95,15 @@ export async function runVerify(doc: VerifyTarget, o: { online: boolean; acceptN
   try {
     result = await verifyDocument(doc.text, opts);
   } catch (e) {
-    result = { ok: false, signatures: [], agreement: { status: "none", required: [], missing: [], violations: [] }, warnings: [], error: String((e as Error).message ?? e) };
+    result = { ok: false, signatures: [], agreement: { status: "none", required: [], missing: [], violations: [], next: [], satisfied: [], declarations: [] }, warnings: [], error: String((e as Error).message ?? e) };
   }
   const newKeys: NewKey[] = result.signatures.filter((s) => s.tofu?.status === "new").map((s) => ({ signer: s.fields.signer!, key: s.fields.pubkey!, fingerprint: s.tofu!.fingerprint }));
   return { text: doc.text, online, result, layout: layout(doc.text), newKeys };
 }
 
-async function loadResource(doc: string, ref: string): Promise<Uint8Array | null> {
+async function loadResource(doc: string, path: string): Promise<Uint8Array | null> {
   try {
-    return new Uint8Array(await native.readResource(doc, ref));
+    return new Uint8Array(await native.readResource(doc, path));
   } catch {
     return null;
   }

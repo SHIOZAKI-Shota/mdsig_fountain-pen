@@ -80,9 +80,12 @@ The sign form shows the same warning, with a "Check the source" button.
 
 "Signature status" shows each signature's result and what it covers.
 
-- **Signatures**: signer, role, method, claimed signing time, timestamp from a time-stamping authority, where the key came from
+- **Signatures**: signer, display name (marked "(self-declared)"), role, method, claimed signing time, timestamp from a time-stamping authority (taken from a timestamp block after that signature), where the key came from
 - **Ranges**: a bracket from line 1 to the signature for a whole-document signature, or around the covered sections for a partial one
-- **Required**: how far the co-signatures requested with `require` have come
+- **Required**: for each signature that set `require`, the order mode, the steps, how many signers each step needs, who has signed, and which signatures did not count and why (signed before their turn, not on the member list, no user verification, and so on)
+- **Table**: the signature table built from the verification result, for documents whose body has `<!-- mdsig:signatures -->`
+
+When a member list or the network needed for the required signatures is not available, the result is "Could not fully check"; when the requirements use rules this version does not support, it is "Not verified". Warnings from verification (an unclosed code block, ignored table markers) are shown on the right.
 
 ![Signature ranges](docs/images/en/status.png)
 
@@ -98,10 +101,10 @@ Press "Sign this document" ("Add my signature" when it is already signed) on the
 
 1. Choose how you sign: a GitHub or GitLab account, a company or personal domain, an email address (key directory), an OpenPGP key, or this key only (does not prove who you are). To sign with an email address, register your key with a key directory and open the link in the confirmation email. Register from the key setup screen, or with "Register this key with a key directory" on the signing screen. The key goes to the directory named by the `_mdsig` record of your email domain, or else to the first directory in Settings.
 2. Enter your account or domain. The key is chosen for you.
-3. Optionally add a role and a comment. A timestamp from a time-stamping authority is added by default. Expiry, partial signatures, and signatures still needed are under "More options".
+3. Optionally add a role, a display name, and a comment. A timestamp from a time-stamping authority is added by default, as a separate block after your signature block. Expiry, partial signatures, and signatures still needed are under "More options". Build the signatures still needed in the form (steps, signers or patterns such as `*.example.com`, roles, user verification, member lists), or edit the `require` value as text; what it means and any mistakes are shown as you type.
 4. Press "Sign" and save the file.
 
-When you sign as a GitHub account and the chosen key is not on that account, the app asks before signing. A document with text after the last signature that nobody signed cannot be signed as it is, so your signature does not appear to approve that text on behalf of the earlier signers.
+The signer is recorded in its canonical form (domains and account names in lower case), and a malformed one is pointed out as you type. When you sign as a GitHub account and the chosen key is not on that account, the app asks before signing. A document that ends inside an open code block cannot be signed. A document with text after the last signature that nobody signed cannot be signed as it is, so your signature does not appear to approve that text on behalf of the earlier signers.
 
 ## Set up a key
 
@@ -127,7 +130,7 @@ A passkey works only on pages of the site it was registered with (its RP ID). Th
 
 ![Keys (passkeys and trusted signers)](docs/images/en/keys.png)
 
-The app sends the signing page only the fields to sign and the hash, never the document text. The signature that comes back is checked against what was sent and the public key from when the passkey was connected, and is appended only if it verifies. Answers come back to `mdsig+fountain-pen://`.
+When the document requires `user_verified` for your signature, the app asks the signing page for user verification (fingerprint, face, or PIN) and refuses a signature made without it. The app sends the signing page only the fields to sign and the hash, never the document text. The signature that comes back is checked against what was sent and the public key from when the passkey was connected, and is appended only if it verifies. Answers come back to `mdsig+fountain-pen://`.
 
 The signing pages of the trusted key directories (`<directory>/sign`) are listed automatically. Add or remove other pages under Settings, "Signing pages".
 
@@ -164,6 +167,8 @@ To sign only part of a document, select the lines in the editor and press "Sign 
 3. The sign form opens with that section selected.
 
 A partial signature covers only its sections, so the text outside them can still be edited and the signature stays valid. Nested sections, duplicate IDs, and selections that overlap signed text or a code block are refused. "Make a section" only inserts the markers. The preview shows `§ <id>` where each section starts.
+
+When the body has a `<!-- mdsig:signatures -->` line, the preview draws the signature table there. The table is built from the verification result and placed outside the body's HTML, so text or tables written in the body cannot imitate it (SPEC 5.11, 9.5). The same results are on the right and in "Signature status".
 
 ## Settings and appearance
 

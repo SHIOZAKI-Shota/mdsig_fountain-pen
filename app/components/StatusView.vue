@@ -9,7 +9,7 @@ import { confirmDialog } from "../services/dialog.ts";
 import { figure, hue } from "../services/figure.ts";
 import { composing } from "../services/keys-ime.ts";
 
-type Tab = "signatures" | "ranges" | "agreement";
+type Tab = "signatures" | "ranges" | "agreement" | "table";
 
 const model = computed(() => {
   void lang.value;
@@ -21,7 +21,8 @@ const tabs = computed<[Tab, string][]>(() => {
   const out: [Tab, string][] = [];
   if (m.cards.length) out.push(["signatures", tr("Signatures")]);
   out.push(["ranges", tr("Ranges")]);
-  if (m.steps.length) out.push(["agreement", tr("Required")]);
+  if (m.agreement.length) out.push(["agreement", tr("Required")]);
+  if (m.table) out.push(["table", tr("Table")]);
   return out;
 });
 const current = ref<Tab>("signatures");
@@ -59,6 +60,7 @@ async function accept() {
           <li v-for="c in model.cards" :key="c.index" :class="hue(c.index, c.tone)">
             <div class="sig-top">
               <span class="idx">#{{ c.index }}</span>
+              <span v-if="c.name" class="declared">{{ c.name }}</span>
               <span class="signer">{{ c.signer }}</span>
               <span v-if="c.role" class="badge">{{ c.role }}</span>
               <span class="status">{{ c.mark }} {{ c.status }}</span>
@@ -72,16 +74,40 @@ async function accept() {
           </li>
         </ul>
         <div v-else-if="active === 'ranges'" ref="figHost" />
-        <ul v-else class="sigs">
-          <li>
+        <ul v-else-if="active === 'agreement'" class="sigs">
+          <li v-for="(d, k) in model.agreement" :key="k">
+            <div class="sig-top">
+              <span class="signer">{{ d.title }}</span>
+              <span class="status" :class="`t-${d.tone}`">{{ d.status }}</span>
+            </div>
+            <div v-for="(n, j) in d.notes" :key="j" class="meta">{{ n }}</div>
             <ul class="steps">
-              <template v-for="(st, i) in model.steps" :key="i">
+              <template v-for="(st, i) in d.steps" :key="i">
                 <li v-if="st.label" class="step" :class="{ done: st.done }">{{ st.done ? "✓" : "…" }} {{ st.label }}</li>
-                <li v-for="(mem, j) in st.members" :key="j" :class="{ done: mem.done }">{{ mem.done ? "✓" : "○" }} {{ mem.text }}</li>
+                <li v-for="(mem, j) in st.members" :key="j" :class="{ done: mem.done }">
+                  {{ mem.done ? "✓" : "○" }} {{ mem.text }}
+                  <span v-for="(n, x) in mem.notes" :key="x" class="step-note">{{ n }}</span>
+                </li>
               </template>
             </ul>
           </li>
         </ul>
+        <div v-else class="sig-table">
+          <p class="note">{{ tr("The signature table this document asks for, built from the verification result. It is not part of the signed text.") }}</p>
+          <table>
+            <thead><tr><th>#</th><th>{{ tr("Signer") }}</th><th>{{ tr("Method") }}</th><th>{{ tr("Role") }}</th><th>{{ tr("Timestamp") }}</th><th>{{ tr("Status") }}</th></tr></thead>
+            <tbody>
+              <tr v-for="(r, i) in model.table ?? []" :key="i">
+                <td class="idx">{{ r.number }}</td>
+                <td><span v-if="r.name" class="declared">{{ r.name }}</span><span class="signer">{{ r.signer }}</span></td>
+                <td>{{ r.method }}</td>
+                <td>{{ r.role }}</td>
+                <td class="mono">{{ r.time }}</td>
+                <td :class="`t-${r.tone}`">{{ r.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </template>
   </div>

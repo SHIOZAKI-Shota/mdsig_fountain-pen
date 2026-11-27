@@ -1,5 +1,5 @@
 import type { VerifyResult } from "@mdsig/core";
-import type { Layout } from "./ranges.ts";
+import type { DocumentLayout as Layout } from "@mdsig/core";
 
 export interface NewKey {
   signer: string;

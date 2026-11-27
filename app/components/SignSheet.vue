@@ -2,8 +2,10 @@
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { findSections, fromBase64, parseDocument, type Signer } from "@mdsig/core";
 import { scanBody } from "../lib/findings.ts";
+import { coreText } from "../lib/present.ts";
+import { checkInput, signerId as canonicalSigner } from "../lib/input.ts";
 import { state, setText, save, notify, revealLine } from "../services/doc.ts";
-import { tr } from "../services/lang.ts";
+import { tr, lang } from "../services/lang.ts";
 import { settings, loadLast, saveLast } from "../services/settings.ts";
 import { confirmDialog, askDialog } from "../services/dialog.ts";
 import { listKeyChoices, signerFor, type KeyChoice } from "../services/keys.ts";
@@ -20,7 +22,7 @@ const METHODS: { id: SignMethod; title: string; desc: string; placeholder: strin
 const ROLES = ["", "author", "reviewer", "approver", "witness"];
 const roleLabel: Record<string, string> = { "": "(not specified)", author: "Author", reviewer: "Reviewer", approver: "Approver", witness: "Witness" };
 
-const form = reactive<SignRequest>({ method: "git-hosting", signer: "", role: "", reason: "", timestamp: true, tsaUrl: settings.tsaUrl, expires: "", scope: [], require: "", embedKey: false, force: false });
+const form = reactive<SignRequest>({ method: "git-hosting", signer: "", role: "", displayName: "", reason: "", timestamp: true, tsaUrl: settings.tsaUrl, expires: "", scope: [], require: "", embedKey: false, force: false });
 const keys = ref<KeyChoice[]>([]);
 const keyId = ref("");
 const loadingKeys = ref(false);
@@ -42,9 +44,12 @@ const canRegister = computed(() => {
 });
 const target = computed(() => {
   const s = form.signer.trim();
-  if (form.method === "git-hosting" && !s.includes("/") && s) return `github.com/${s.replace(/^@/, "")}`;
-  return form.method === "directory" ? s.toLowerCase() : s;
+  if (form.method === "git-hosting" && !s.includes("/") && s) return canonicalSigner({ method: "git-hosting", signer: `github.com/${s.replace(/^@/, "")}` });
+  return canonicalSigner({ method: form.method, signer: s });
 });
+const check = computed(() => checkInput({ method: form.method, signer: target.value, displayName: form.displayName, require: form.require }, lang.value === "ja" ? "ja" : "en"));
+const openFence = computed(() => parsed.value.unclosedFence);
+const blocked = computed(() => !!(check.value.signer || check.value.displayName || check.value.require?.blocking) || openFence.value);
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 async function loadKeys() {
@@ -128,6 +133,7 @@ async function submit() {
   if (form.method === "directory" && !EMAIL_RE.test(signerId)) return void (error.value = tr("Enter an email address."));
   const choice = keys.value.find((k) => k.id === keyId.value);
   if (!choice) return void (error.value = tr("Choose a key."));
+  if (blocked.value) return void (error.value = check.value.signer ?? check.value.displayName ?? check.value.require?.errors.join("\n") ?? tr("The document ends inside an open code block. Close it before signing, otherwise every signature would be shown as code."));
   busy.value = true;
   try {
     const before = d.text;
@@ -150,11 +156,11 @@ async function submit() {
     setText(out, { online: true });
     state.sheet = null;
     state.mode = "status";
-    if (await confirmDialog(tr("Signed as {0}. Save the file to keep the signature.", signerId), tr("Save"), tr("Later"))) await save();
+    if (await confirmDialog(form.timestamp ? tr("Signed as {0}, with a timestamp block after the signature. Save the file to keep the signature.", signerId) : tr("Signed as {0}. Save the file to keep the signature.", signerId), tr("Save"), tr("Later"))) await save();
     else notify(tr("Signed. The signature is kept only after you save."), "muted");
   } catch (e) {
     const msg = String((e as Error).message ?? e);
-    if (msg !== tr("Cancelled") && !(e instanceof HandoffCancelled)) error.value = msg;
+    if (msg !== tr("Cancelled") && !(e instanceof HandoffCancelled)) error.value = coreText(msg);
   } finally {
     busy.value = false;
   }
@@ -190,6 +196,7 @@ async function submit() {
       <div class="field">
         <label for="signer">{{ tr("Account, domain, or name") }}</label>
         <input id="signer" v-model="form.signer" type="text" :placeholder="tr(method.placeholder)" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" />
+        <p v-if="check.signer" class="field-error" role="alert">{{ tr("The signer is not valid: {0}", check.signer) }}</p>
       </div>
 
       <div class="field">
@@ -219,6 +226,12 @@ async function submit() {
         </select>
       </div>
       <div class="field">
+        <label for="display-name">{{ tr("Display name (optional)") }}</label>
+        <input id="display-name" v-model="form.displayName" type="text" maxlength="64" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" />
+        <p class="hint">{{ tr("Shown next to your verified identity and marked as self-declared.") }}</p>
+        <p v-if="check.displayName" class="field-error" role="alert">{{ tr("The display name is not valid: {0}", check.displayName) }}</p>
+      </div>
+      <div class="field">
         <label for="reason">{{ tr("Comment (optional)") }}</label>
         <input id="reason" v-model="form.reason" type="text" />
       </div>
@@ -241,19 +254,26 @@ async function submit() {
           </div>
         </div>
         <div class="field">
-          <label for="require">{{ tr("Signatures still needed after yours (one per line, e.g. dns:example.com approver)") }}</label>
-          <textarea id="require" v-model="form.require" rows="3" spellcheck="false" autocorrect="off" autocapitalize="off" />
+          <span class="label">{{ tr("Signatures still needed after yours") }}</span>
+          <p class="hint">{{ tr("One requirement per line, for example dns:example.com role=approver. Group lines with step or step any=2, and set the order with order mode=guide or order mode=strict.") }}</p>
+          <RequireBuilder v-model="form.require" />
+          <label for="require">{{ tr("Edit as text") }}</label>
+          <textarea id="require" v-model="form.require" rows="4" placeholder="dns:example.com role=approver" spellcheck="false" autocorrect="off" autocapitalize="off" />
+          <pre v-if="check.require?.explanation" class="explain">{{ check.require.explanation }}</pre>
+          <p v-for="(p, i) in check.require?.errors ?? []" :key="i" class="field-error">{{ p }}</p>
+          <p v-for="(p, i) in check.require?.warnings ?? []" :key="`w${i}`" class="field-warn">{{ p }}</p>
         </div>
         <label v-if="form.method === 'dns' || form.method === 'git-hosting' || form.method === 'directory'" class="check"><input v-model="form.embedKey" type="checkbox" />{{ tr("Include the public key in the signature, so it can still be checked if the key is removed") }}</label>
       </details>
 
       <p class="covers">{{ form.scope.length ? tr("Your signature will cover only the selected sections.") : tr("Your signature will cover the whole document as it is now: {0} lines of text and {1} earlier signature(s).", bodyLines, parsed.chain.length) }}</p>
+      <p v-if="openFence" class="warn-text">{{ tr("The document ends inside an open code block. Close it before signing, otherwise every signature would be shown as code.") }}</p>
       <template v-if="tail">
         <p class="warn-text">{{ tr("There is text after the last signature that nobody signed. Signing now would approve it on behalf of the earlier signers.") }}</p>
         <label class="check"><input v-model="form.force" type="checkbox" />{{ tr("Sign the whole file as a new document (the earlier signatures stay, but no longer cover the end)") }}</label>
       </template>
       <p class="error" role="alert">{{ error }}</p>
-      <button type="button" class="primary big" :disabled="busy || !keys.length || (tail && !form.force)" @click="submit()">{{ busy ? tr("Signing…") : tr("Sign") }}</button>
+      <button type="button" class="primary big" :disabled="busy || !keys.length || (tail && !form.force) || blocked" @click="submit()">{{ busy ? tr("Signing…") : tr("Sign") }}</button>
     </div>
   </section>
 </template>

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { verifyDocument } from "@mdsig/core";
-import { layout } from "../app/lib/ranges.ts";
+import { documentLayout as layout } from "@mdsig/core";
 import { locks, lockedSpans, touches } from "../app/lib/locks.ts";
 import { buildModel } from "../app/lib/model.ts";
 import { summarize } from "../app/lib/present.ts";

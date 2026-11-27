@@ -1,7 +1,6 @@
-import type { BlockResult } from "@mdsig/core";
+import { findSignatureMarker, signatureTable, type BlockResult, type LineRange } from "@mdsig/core";
 import type { Entry } from "./entry.ts";
-import { mark, methodLabel, signerLabel, statusText, summarize, summaryText, summaryTone, tone, type T, type Tone } from "./present.ts";
-import type { LineRange } from "./ranges.ts";
+import { coreText, declarationText, declaredName, mark, methodLabel, orderText, rejectText, requirementText, signerLabel, statusText, summarize, summaryMark, summaryText, summaryTone, timeText, tone, type T, type Tone } from "./present.ts";
 
 export interface Row {
   line: number | null;
@@ -28,6 +27,7 @@ export interface Card {
   signer: string;
   method: string;
   role?: string;
+  name?: string;
   rows: [string, string][];
   line: number;
   keyChanged: boolean;
@@ -36,7 +36,26 @@ export interface Card {
 export interface Step {
   label: string;
   done: boolean;
-  members: { text: string; done: boolean }[];
+  members: { text: string; done: boolean; notes: string[] }[];
+}
+
+export interface Declaration {
+  title: string;
+  tone: Tone;
+  status: string;
+  notes: string[];
+  steps: Step[];
+}
+
+export interface TableRow {
+  number: string;
+  name: string;
+  signer: string;
+  method: string;
+  role: string;
+  time: string;
+  status: string;
+  tone: Tone;
 }
 
 export interface ViewModel {
@@ -44,7 +63,9 @@ export interface ViewModel {
   brackets: Bracket[];
   seal: { tone: Tone; mark: string; title: string; detail: string };
   cards: Card[];
-  steps: Step[];
+  agreement: Declaration[];
+  table: TableRow[] | null;
+  warnings: string[];
   online: boolean;
 }
 
@@ -68,7 +89,10 @@ function keepLines(e: Entry, full: boolean): Set<number> | null {
   for (const b of e.layout.blocks) {
     add(b.from, b.from);
     add(b.to, b.to + 1);
-    for (let l = b.from; l <= b.to; l++) if (/^(method|signer|role|scope|require): /.test(lines[l - 1] ?? "")) keep.add(l);
+    for (let l = b.from; l <= b.to; l++) if (/^(method|signer|display_name|role|scope|require): /.test(lines[l - 1] ?? "")) {
+      keep.add(l);
+      if (/: \|$/.test(lines[l - 1] ?? "")) for (let c = l + 1; c < b.to && /^  /.test(lines[c - 1] ?? ""); c++) keep.add(c);
+    }
   }
   if (e.layout.tail) add(e.layout.tail.from, e.layout.tail.to);
   if (e.layout.strayBlock) {
@@ -127,9 +151,11 @@ export function buildModel(t: T, e: Entry, full: boolean): ViewModel {
   return {
     rows,
     brackets,
-    seal: { tone: summaryTone(k), mark: k === "verified" ? "✓" : k === "pending" ? "…" : k === "offline" || k === "unsigned" ? "−" : k === "incomplete" ? "?" : "✗", title: sum.title, detail: sum.detail },
+    seal: { tone: summaryTone(k), mark: summaryMark(k), title: sum.title, detail: sum.detail },
     cards,
-    steps: steps(t, e),
+    agreement: agreement(t, e),
+    table: signatureRows(t, e),
+    warnings: warnings(e),
     online: e.online,
   };
 }
@@ -140,30 +166,74 @@ function card(t: T, s: BlockResult, span: LineRange | undefined): Card {
   const add = (k: string, v: string | undefined) => v && rows.push([k, v]);
   add(t("Reason"), f.reason);
   add(t("Signed at (claimed)"), f.ts);
-  add(t("Timestamp"), s.tsa?.verified ? `${s.tsa.genTime}` : s.tsa ? t("present, not verified") : undefined);
+  add(t("Timestamp"), timeText(t, s) ?? (s.tsa && !s.tsa.verified ? t("present, not verified") : undefined));
   add(t("Key from"), s.key?.source ?? (s.pgp?.keySource ? `OpenPGP ${s.pgp.fpr ?? ""} (${s.pgp.keySource})` : undefined));
-  add(t("Passkey"), s.webauthn ? `rp_id ${s.webauthn.rpId}${s.webauthn.userVerified ? "" : ` (${t("user not verified")})`}` : undefined);
+  add(t("Passkey"), s.webauthn ? passkeyText(t, s.webauthn) : undefined);
   add(t("Expires"), f.expires);
   add(t("Covers"), s.partial ? s.partial.sections.join(", ") : undefined);
-  if (s.message && s.status !== "valid") add(t("Details"), s.message);
-  return { index: s.index, tone: tone(s), mark: mark(s), status: statusText(t, s), signer: signerLabel(s), method: methodLabel(t, f.method), ...(f.role ? { role: f.role } : {}), rows, line: span?.from ?? 1, keyChanged: s.code === "key-changed" };
+  if (s.message && s.status !== "valid") add(t("Details"), coreText(s.message));
+  for (const w of s.warnings) add(t("Note"), coreText(w));
+  const name = declaredName(t, s);
+  return { index: s.index, tone: tone(s), mark: mark(s), status: statusText(t, s), signer: signerLabel(s), method: methodLabel(t, f.method), ...(f.role ? { role: f.role } : {}), ...(name ? { name } : {}), rows, line: span?.from ?? 1, keyChanged: s.code === "key-changed" };
 }
 
-function steps(t: T, e: Entry): Step[] {
+export function passkeyText(t: T, w: NonNullable<BlockResult["webauthn"]>): string {
+  const parts = [`rp_id ${w.rpId}`, w.userVerified ? t("user verified") : t("user not verified")];
+  parts.push(w.backedUp ? t("synced passkey") : w.backupEligible ? t("syncable passkey (not synced)") : t("device-bound passkey"));
+  return parts.join(" · ");
+}
+
+function agreement(t: T, e: Entry): Declaration[] {
   const a = e.result.agreement;
   if (a.status === "none") return [];
-  const key = (r: { declaredBy: number; step: number }) => `${r.declaredBy}|${r.step}`;
-  const missing = new Set(a.missing.map((m) => `${key(m)}|${m.method}:${m.signer}|${m.role ?? ""}`));
-  const groups = new Map<string, { step: number; any: number; members: Step["members"] }>();
-  for (const r of a.required) {
-    const g = groups.get(key(r)) ?? { step: r.step, any: r.any, members: [] };
-    g.members.push({ text: `${r.signer}${r.role ? ` (${r.role})` : ""}`, done: !missing.has(`${key(r)}|${r.method}:${r.signer}|${r.role ?? ""}`) });
-    groups.set(key(r), g);
-  }
-  const many = new Set([...groups.values()].map((g) => g.step)).size > 1;
-  return [...groups.values()].map((g) => ({
-    label: g.members.length > g.any ? t("Step {0}: {1} of these", g.step, g.any) : many ? t("Step {0}", g.step) : "",
-    done: g.members.filter((m) => m.done).length >= g.any,
-    members: g.members,
-  }));
+  return a.declarations.map((d) => {
+    const mine = a.required.filter((r) => r.declaredBy === d.declaredBy);
+    const missing = new Map(a.missing.filter((m) => m.declaredBy === d.declaredBy).map((m) => [`${m.step}|${m.line}`, m]));
+    const many = d.steps.length > 1;
+    const steps: Step[] = d.steps.map((st) => {
+      const members = mine
+        .filter((r) => r.step === st.step)
+        .map((r) => {
+          const by = st.lines.find((l) => l.line === r.line)?.blocks ?? [];
+          const m = missing.get(`${st.step}|${r.line}`);
+          const notes = by.map((i) => t("signed by #{0}", i));
+          if (m) notes.push(...m.rejected.map((x) => rejectText(t, x.index, x.reason)));
+          if (m && st.blockedBy !== undefined) notes.push(t("waits for step {0}", st.blockedBy));
+          return { text: requirementText(r), done: by.length > 0, notes };
+        });
+      const label = st.any !== null ? (many ? t("Step {0}: {1} of these", st.step, st.any) : t("{0} of these", st.any)) : many ? t("Step {0}", st.step) : "";
+      return { label, done: st.complete, members };
+    });
+    const notes: string[] = [];
+    const order = orderText(t, d.order);
+    if (order) notes.push(order);
+    for (const v of a.violations.filter((x) => x.declaredBy === d.declaredBy)) notes.push(t("#{0} signed before step {1} was reached", v.index, v.step));
+    if (d.detail) notes.push(coreText(d.detail));
+    const dtone: Tone = d.status === "complete" ? "ok" : d.status === "pending" || d.status === "undetermined" ? "warn" : "bad";
+    return { title: t("Required by #{0}", d.declaredBy), tone: dtone, status: declarationText(t, d.status), notes, steps };
+  });
+}
+
+export function signatureRows(t: T, e: Entry): TableRow[] | null {
+  const first = e.layout.blocks[0];
+  if (!first) return null;
+  const body = e.text.replace(/\r\n?/g, "\n").split("\n").slice(0, first.from - 1).join("\n");
+  if (findSignatureMarker(body).line === undefined) return null;
+  return signatureTable(e.result).map((r) => {
+    const s = r.number !== null ? e.result.signatures.find((x) => x.index === r.number) : undefined;
+    return {
+      number: r.number !== null ? `#${r.number}` : "",
+      name: r.displayName ? t("“{0}” (self-declared)", r.displayName) : "",
+      signer: r.pattern ? requirementText({ method: r.method, signer: r.signer, pattern: true, attributes: {} }) : r.signer,
+      method: methodLabel(t, r.method),
+      role: r.role ?? "",
+      time: r.time ?? "",
+      status: s ? `${mark(s)} ${statusText(t, s)}` : r.need ? t("Not signed yet ({0} needed)", r.need) : t("Not signed yet"),
+      tone: s ? tone(s) : "muted",
+    };
+  });
+}
+
+function warnings(e: Entry): string[] {
+  return e.result.warnings.map(coreText);
 }
